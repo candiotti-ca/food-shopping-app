@@ -1,3 +1,6 @@
+import { appTheme } from './theme';
+import { skeleton } from '@skeletonlabs/tw-plugin';
+
 /** @type {import('tailwindcss').Config}*/
 const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
@@ -6,7 +9,15 @@ const config = {
 		extend: {}
 	},
 
-	plugins: []
+	plugins: [
+		skeleton({
+			themes: {
+				custom: [
+					appTheme
+				]
+			}
+		})
+	]
 };
 
 module.exports = config;
