@@ -60,4 +60,4 @@ export const current_month: Readable<string> = readable('', set => {
 });
 
 /** User's shopping list */
-export const shopping_articles: Writable<Map<string, number>> = writable(new Map());
+export const shopping_articles: Writable<Map<string, boolean>> = writable(new Map());

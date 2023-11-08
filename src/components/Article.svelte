@@ -3,37 +3,43 @@
 	import Button from './Button.svelte';
 
 	export let name: string;
-	export let quantity: number;
+	export let validated: boolean;
 
-	function increment(): void {
+	function flipArticle(): void {
 		shopping_articles.update((list) => {
 			if (list.has(name)) {
-				list.set(name, quantity + 1);
+				list.set(name, !validated);
 			}
 			return list;
 		});
 	}
 
-	function decrement(): void {
+	function removeArticle(event: Event): void {
+		event.stopPropagation();
+
 		shopping_articles.update((list) => {
-			if (quantity > 1) {
-				list.set(name, quantity - 1);
-			} else {
-				list.delete(name);
-			}
+			list.delete(name);
 			return list;
 		});
 	}
 </script>
 
-<section class="alert variant-ringed-success">
+<section
+	class="alert hover:cursor-pointer {validated
+		? 'variant-soft-surface hover:variant-ghost-surface'
+		: 'variant-ringed-success hover:variant-ghost-success'}"
+	on:click={flipArticle}
+	on:keypress={flipArticle}
+	role="switch"
+	aria-checked={validated}
+	tabindex="0"
+>
 	<div class="alert-message">
 		{name}
 	</div>
 
 	<div class="alert-actions">
-		<Button size="sm" color="secondary" on:click={increment}>+</Button>
-		<span class="mx-1">{quantity}</span>
-		<Button size="sm" color="secondary" on:click={decrement}>-</Button>
+		<Button size="sm" color={validated ? 'surface' : 'secondary'} on:click={removeArticle}>x</Button
+		>
 	</div>
 </section>
