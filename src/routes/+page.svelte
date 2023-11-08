@@ -8,18 +8,43 @@
 		seasonal_vegetables,
 		shopping_articles
 	} from '../stores';
+	import {
+		Modal,
+		initializeStores,
+		type ModalSettings,
+		getModalStore
+	} from '@skeletonlabs/skeleton';
+
+	initializeStores();
+	const modalStore = getModalStore();
 
 	function addNewArticle(): void {
-		shopping_articles.update((list) => {
-			list.set('TEST', 1);
-			return list;
-		});
+		const addFn = (name: string | false) => {
+			if (name) {
+				shopping_articles.update((list) => {
+					list.set(name, 1);
+					return list;
+				});
+			}
+		};
+
+		const modal: ModalSettings = {
+			type: 'prompt',
+			title: 'Ajouter un article',
+			buttonTextCancel: 'Annuler',
+			buttonTextSubmit: 'Valider',
+			valueAttr: { type: 'text', minlength: 3, required: true },
+			response: (articleName: string | false) => addFn(articleName)
+		};
+		modalStore.trigger(modal);
 	}
 </script>
 
 <header class="bg-primary-500 h-[10vh] flex justify-center align-center">
 	<Heading white>Coucourses</Heading>
 </header>
+
+<Modal />
 
 <div class="h-[85vh] p-5 flex flex-col space-y-5">
 	<!-- Seasonal vegetables banner -->
