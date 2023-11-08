@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { fade } from "svelte/transition";
-	import type { Color, Style } from "../types/theme";
+	import type { Color, Variant } from "../types/theme";
 
 	export let color: Color = "primary";
-	export let style: Style = "filled";
+	export let variant: Variant = "filled";
 </script>
 
-<aside class="alert variant-{style}-{color}" transition:fade={{ duration: 200 }}>
+<aside class="alert variant-{variant}-{color}" transition:fade={{ duration: 200 }}>
 	<div class="alert-message">
 		<slot/>
 	</div>

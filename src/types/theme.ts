@@ -13,8 +13,9 @@ export type Size =
 "lg" | 
 "xl";
 
-export type Style = 
+export type Variant = 
 "filled" |
 "ghost" |
 "soft" |
-"ringed";
+"ringed" |
+"glass";
