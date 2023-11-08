@@ -2,8 +2,8 @@
 import type { CustomThemeConfig } from '@skeletonlabs/tw-plugin';
 
 export const appTheme: CustomThemeConfig = {
-    name: 'app-theme',
-    properties: {
+	name: 'app-theme',
+	properties: {
 		// =~= Theme Properties =~=
 		"--theme-font-family-base": `system-ui`,
 		"--theme-font-family-heading": `system-ui`,
@@ -32,28 +32,28 @@ export const appTheme: CustomThemeConfig = {
 		"--color-primary-700": "68 86 2", // #445602
 		"--color-primary-800": "54 69 1", // #364501
 		"--color-primary-900": "44 56 1", // #2c3801
-		// secondary | #734B02 
-		"--color-secondary-50": "234 228 217", // #eae4d9
-		"--color-secondary-100": "227 219 204", // #e3dbcc
-		"--color-secondary-200": "220 210 192", // #dcd2c0
-		"--color-secondary-300": "199 183 154", // #c7b79a
-		"--color-secondary-400": "157 129 78", // #9d814e
-		"--color-secondary-500": "115 75 2", // #734B02
-		"--color-secondary-600": "104 68 2", // #684402
-		"--color-secondary-700": "86 56 2", // #563802
-		"--color-secondary-800": "69 45 1", // #452d01
-		"--color-secondary-900": "56 37 1", // #382501
-		// tertiary | #b44359 
-		"--color-tertiary-50": "244 227 230", // #f4e3e6
-		"--color-tertiary-100": "240 217 222", // #f0d9de
-		"--color-tertiary-200": "236 208 214", // #ecd0d6
-		"--color-tertiary-300": "225 180 189", // #e1b4bd
-		"--color-tertiary-400": "203 123 139", // #cb7b8b
-		"--color-tertiary-500": "180 67 89", // #b44359
-		"--color-tertiary-600": "162 60 80", // #a23c50
-		"--color-tertiary-700": "135 50 67", // #873243
-		"--color-tertiary-800": "108 40 53", // #6c2835
-		"--color-tertiary-900": "88 33 44", // #58212c
+		// secondary | #F2B705 
+		"--color-secondary-50": "253 244 218", // #fdf4da
+		"--color-secondary-100": "252 241 205", // #fcf1cd
+		"--color-secondary-200": "252 237 193", // #fcedc1
+		"--color-secondary-300": "250 226 155", // #fae29b
+		"--color-secondary-400": "246 205 80", // #f6cd50
+		"--color-secondary-500": "242 183 5", // #F2B705
+		"--color-secondary-600": "218 165 5", // #daa505
+		"--color-secondary-700": "182 137 4", // #b68904
+		"--color-secondary-800": "145 110 3", // #916e03
+		"--color-secondary-900": "119 90 2", // #775a02
+		// tertiary | #ffffff 
+		"--color-tertiary-50": "255 255 255", // #ffffff
+		"--color-tertiary-100": "255 255 255", // #ffffff
+		"--color-tertiary-200": "255 255 255", // #ffffff
+		"--color-tertiary-300": "255 255 255", // #ffffff
+		"--color-tertiary-400": "255 255 255", // #ffffff
+		"--color-tertiary-500": "255 255 255", // #ffffff
+		"--color-tertiary-600": "230 230 230", // #e6e6e6
+		"--color-tertiary-700": "191 191 191", // #bfbfbf
+		"--color-tertiary-800": "153 153 153", // #999999
+		"--color-tertiary-900": "125 125 125", // #7d7d7d
 		// success | #93A603 
 		"--color-success-50": "239 242 217", // #eff2d9
 		"--color-success-100": "233 237 205", // #e9edcd
@@ -65,17 +65,17 @@ export const appTheme: CustomThemeConfig = {
 		"--color-success-700": "110 125 2", // #6e7d02
 		"--color-success-800": "88 100 2", // #586402
 		"--color-success-900": "72 81 1", // #485101
-		// warning | #F2B705 
-		"--color-warning-50": "253 244 218", // #fdf4da
-		"--color-warning-100": "252 241 205", // #fcf1cd
-		"--color-warning-200": "252 237 193", // #fcedc1
-		"--color-warning-300": "250 226 155", // #fae29b
-		"--color-warning-400": "246 205 80", // #f6cd50
-		"--color-warning-500": "242 183 5", // #F2B705
-		"--color-warning-600": "218 165 5", // #daa505
-		"--color-warning-700": "182 137 4", // #b68904
-		"--color-warning-800": "145 110 3", // #916e03
-		"--color-warning-900": "119 90 2", // #775a02
+		// warning | #734B02 
+		"--color-warning-50": "234 228 217", // #eae4d9
+		"--color-warning-100": "227 219 204", // #e3dbcc
+		"--color-warning-200": "220 210 192", // #dcd2c0
+		"--color-warning-300": "199 183 154", // #c7b79a
+		"--color-warning-400": "157 129 78", // #9d814e
+		"--color-warning-500": "115 75 2", // #734B02
+		"--color-warning-600": "104 68 2", // #684402
+		"--color-warning-700": "86 56 2", // #563802
+		"--color-warning-800": "69 45 1", // #452d01
+		"--color-warning-900": "56 37 1", // #382501
 		// error | #D95204 
 		"--color-error-50": "249 229 217", // #f9e5d9
 		"--color-error-100": "247 220 205", // #f7dccd
@@ -98,6 +98,6 @@ export const appTheme: CustomThemeConfig = {
 		"--color-surface-700": "65 77 98", // #414d62
 		"--color-surface-800": "52 62 78", // #343e4e
 		"--color-surface-900": "43 50 64", // #2b3240
-		
+
 	}
 }
