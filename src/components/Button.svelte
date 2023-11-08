@@ -6,6 +6,6 @@
 	export let variant: Variant = 'filled';
 </script>
 
-<button type="button" class="btn btn-{size} variant-{variant}-{color}">
+<button type="button" class="btn btn-{size} variant-{variant}-{color}" on:click>
 	<slot />
 </button>
