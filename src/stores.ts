@@ -58,3 +58,6 @@ export const current_month: Readable<string> = readable('', set => {
 
     return undefined;
 });
+
+/** User's shopping list */
+export const shopping_articles: Writable<string[]> = writable([]);
