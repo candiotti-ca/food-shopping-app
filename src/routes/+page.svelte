@@ -2,7 +2,19 @@
 	import Article from '../components/Article.svelte';
 	import Button from '../components/Button.svelte';
 	import Heading from '../components/Heading.svelte';
-	import { current_month, seasonal_fruits, seasonal_vegetables } from '../stores';
+	import {
+		current_month,
+		seasonal_fruits,
+		seasonal_vegetables,
+		shopping_articles
+	} from '../stores';
+
+	function addNewArticle(): void {
+		shopping_articles.update((list) => {
+			list.set('TEST', 1);
+			return list;
+		});
+	}
 </script>
 
 <header class="bg-primary-500 h-[10vh] flex justify-center align-center">
@@ -35,16 +47,11 @@
 	</div>
 
 	<!-- Shopping articles -->
-	<!-- {#each $shopping_articles as article}
-		youpi
-	{/each} -->
-
-	<Article>yes</Article>
-	<Article>yes</Article>
-	<Article>yes</Article>
-	<Article>yes</Article>
+	{#each $shopping_articles.entries() as article}
+		<Article name={article[0]} quantity={article[1]} />
+	{/each}
 </div>
 
 <footer class="bg-primary-500 h-[5vh] flex justify-center align-center">
-	<Button variant="soft" color="surface">+</Button>
+	<Button variant="soft" color="surface" on:click={addNewArticle}>+</Button>
 </footer>
