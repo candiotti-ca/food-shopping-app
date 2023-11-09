@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
+	import TrashIcon from '~icons/material-symbols/delete-forever';
 	import { shopping_articles } from '../stores';
 	import Button from './Button.svelte';
 	import Icon from './Icon.svelte';
-	import TrashIcon from '~icons/material-symbols/delete-forever';
 
 	export let name: string;
 	export let validated: boolean;
@@ -32,6 +33,7 @@
 		: 'variant-ringed-success hover:variant-ghost-success'}"
 	on:click={flipArticle}
 	on:keypress={flipArticle}
+	transition:fade
 	role="switch"
 	aria-checked={validated}
 	tabindex="0"
