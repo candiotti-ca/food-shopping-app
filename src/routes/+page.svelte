@@ -5,6 +5,9 @@
 		initializeStores,
 		type ModalSettings
 	} from '@skeletonlabs/skeleton';
+	import AddIcon from '~icons/material-symbols/add';
+	import PineapleIcon from '~icons/twemoji/pineapple';
+	import CarrotIcon from '~icons/twemoji/carrot';
 	import Article from '../components/Article.svelte';
 	import Button from '../components/Button.svelte';
 	import Heading from '../components/Heading.svelte';
@@ -14,6 +17,7 @@
 		seasonal_vegetables,
 		shopping_articles
 	} from '../stores';
+	import Icon from '../components/Icon.svelte';
 
 	initializeStores();
 	const modalStore = getModalStore();
@@ -56,14 +60,24 @@
 			<dl class="list-dl">
 				<div>
 					<span>
-						<dt class="font-semibold">Légumes</dt>
+						<dt class="font-semibold">
+							<span class="flex space-x-2">
+								<Icon size="xl"><CarrotIcon /></Icon>
+								<span>Légumes</span>
+							</span>
+						</dt>
 						<dd>{$seasonal_vegetables.join(', ')}</dd>
 					</span>
 				</div>
 
 				<div>
 					<span>
-						<dt class="font-semibold">Fruits</dt>
+						<dt class="font-semibold">
+							<span class="flex space-x-2">
+								<Icon size="xl"><PineapleIcon /></Icon>
+								<span>Fruits</span>
+							</span>
+						</dt>
 						<dd>{$seasonal_fruits.join(', ')}</dd>
 					</span>
 				</div>
@@ -78,5 +92,7 @@
 </div>
 
 <footer class="bg-primary-500 h-[5vh] flex justify-center align-center">
-	<Button color="success" on:click={addNewArticle}>+</Button>
+	<Button color="success" on:click={addNewArticle}>
+		<Icon color="surface" size="xl"><AddIcon /></Icon>
+	</Button>
 </footer>

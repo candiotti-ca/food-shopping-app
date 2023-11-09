@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { shopping_articles } from '../stores';
 	import Button from './Button.svelte';
+	import Icon from './Icon.svelte';
+	import TrashIcon from '~icons/material-symbols/delete-forever';
 
 	export let name: string;
 	export let validated: boolean;
@@ -39,7 +41,8 @@
 	</div>
 
 	<div class="alert-actions">
-		<Button size="sm" color={validated ? 'surface' : 'secondary'} on:click={removeArticle}>x</Button
-		>
+		<Button on:click={removeArticle}>
+			<Icon color={validated ? 'surface' : 'error'} size="xl"><TrashIcon /></Icon>
+		</Button>
 	</div>
 </section>
