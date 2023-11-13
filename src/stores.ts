@@ -1,19 +1,14 @@
 import { derived, readable, writable, type Readable, type Writable } from 'svelte/store';
-import data from './lib/data.json';
-import type { VegetablePerMonth } from './types/vegetables_per_month';
 import type { Article } from './types/article';
+import type { VegetablePerMonth } from './types/vegetables_per_month';
 
-const seasonal: Readable<VegetablePerMonth> = readable({ vegetables: [], fruits: [] } as any, set => {
-    const currentMonth = new Date().getMonth();
-    set(data.vegetables[currentMonth]);
-    return undefined;
-});
+export const seasonal: Writable<VegetablePerMonth> = writable();
 
 /** All current month's vegetables */
-export const seasonal_vegetables: Readable<string[]> = derived(seasonal, value => value.vegetables);
+export const seasonal_vegetables: Readable<string[]> = derived(seasonal, value => value?.vegetables || []);
 
 /** All current month's fruits */
-export const seasonal_fruits: Readable<string[]> = derived(seasonal, value => value.fruits);
+export const seasonal_fruits: Readable<string[]> = derived(seasonal, value => value?.fruits || []);
 
 /** Current month as string */
 export const current_month: Readable<string> = readable('', set => {
