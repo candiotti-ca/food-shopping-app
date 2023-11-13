@@ -1,54 +1,29 @@
 <script lang="ts">
-	import {
-		Modal,
-		getModalStore,
-		initializeStores,
-		type ModalSettings
-	} from '@skeletonlabs/skeleton';
 	import AddIcon from '~icons/material-symbols/add';
-	import PineapleIcon from '~icons/twemoji/pineapple';
 	import CarrotIcon from '~icons/twemoji/carrot';
+	import PineapleIcon from '~icons/twemoji/pineapple';
 	import Article from '../components/Article.svelte';
 	import Button from '../components/Button.svelte';
 	import Heading from '../components/Heading.svelte';
+	import Icon from '../components/Icon.svelte';
+	import NewArticle from '../components/NewArticle.svelte';
 	import {
 		current_month,
+		ordered_shopping_articles,
 		seasonal_fruits,
-		seasonal_vegetables,
-		shopping_articles
+		seasonal_vegetables
 	} from '../stores';
-	import Icon from '../components/Icon.svelte';
 
-	initializeStores();
-	const modalStore = getModalStore();
+	let addingAnArticle = false;
 
 	function addNewArticle(): void {
-		const addFn = (name: string | false) => {
-			if (name) {
-				shopping_articles.update((list) => {
-					list.set(name, false);
-					return list;
-				});
-			}
-		};
-
-		const modal: ModalSettings = {
-			type: 'prompt',
-			title: 'Ajouter un article',
-			buttonTextCancel: 'Annuler',
-			buttonTextSubmit: 'Valider',
-			valueAttr: { type: 'text', minlength: 3, required: true },
-			response: (articleName: string | false) => addFn(articleName)
-		};
-		modalStore.trigger(modal);
+		addingAnArticle = true;
 	}
 </script>
 
 <header class="bg-primary-500 h-[10vh] flex justify-center align-center">
 	<Heading white>Coucourses</Heading>
 </header>
-
-<Modal />
 
 <div class="h-[85vh] p-5 flex flex-col space-y-5">
 	<!-- Seasonal vegetables banner -->
@@ -86,9 +61,14 @@
 	</div>
 
 	<!-- Shopping articles -->
-	{#each $shopping_articles.entries() as article}
-		<Article name={article[0]} validated={article[1]} />
+	{#each $ordered_shopping_articles as article}
+		<Article {article} />
 	{/each}
+
+	<!-- New article -->
+	{#if addingAnArticle}
+		<NewArticle on:added={() => (addingAnArticle = false)} />
+	{/if}
 </div>
 
 <footer class="bg-primary-500 h-[5vh] flex justify-center align-center">

@@ -1,6 +1,7 @@
 import { derived, readable, writable, type Readable, type Writable } from 'svelte/store';
 import data from './lib/data.json';
 import type { VegetablePerMonth } from './types/vegetables_per_month';
+import type { Article } from './types/article';
 
 const seasonal: Readable<VegetablePerMonth> = readable({ vegetables: [], fruits: [] } as any, set => {
     const currentMonth = new Date().getMonth();
@@ -60,4 +61,36 @@ export const current_month: Readable<string> = readable('', set => {
 });
 
 /** User's shopping list */
-export const shopping_articles: Writable<Map<string, boolean>> = writable(new Map());
+export const shopping_articles = (() => {
+    const { subscribe, set, update } = writable(new Map());
+
+    return {
+        subscribe,
+        set,
+        update,
+        addArticle: (name: string | false) => {
+            if (name) {
+                shopping_articles.update((list) => {
+                    list.set(name, false);
+                    return list;
+                });
+            }
+        },
+        strokeArticle: (article: Article) => update((list) => {
+            if (list.has(article.name)) {
+                list.set(article.name, !article.stroked);
+            }
+            return list;
+        }),
+        deleteArticle: (name: string) => update((list) => {
+            list.delete(name);
+            return list;
+        })
+    };
+})();
+
+/** Ordered user's shopping list by stroked status */
+export const ordered_shopping_articles: Readable<Article[]> = derived(
+    shopping_articles,
+    articles => Array.from(articles).map(entry => ({ name: entry[0], stroked: entry[1] })).sort((a, b) => a.stroked ? 1 : -1)
+);
