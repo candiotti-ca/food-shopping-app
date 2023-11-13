@@ -7,21 +7,26 @@
 	import Heading from '../components/Heading.svelte';
 	import Icon from '../components/Icon.svelte';
 	import NewArticle from '../components/NewArticle.svelte';
+	import { onMount } from 'svelte';
 	import {
 		current_month,
 		ordered_shopping_articles,
+		seasonal,
 		seasonal_fruits,
 		seasonal_vegetables
 	} from '../stores';
 
+	export let data;
 	let addingAnArticle = false;
+
+	onMount(() => seasonal.set(data));
 
 	function addNewArticle(): void {
 		addingAnArticle = true;
 	}
 </script>
 
-<header class="bg-primary-500 h-[10vh] flex justify-center align-center">
+<header class="bg-primary-500 h-[10vh] flex justify-center align-center" id="app-title">
 	<Heading white>Coucourses</Heading>
 </header>
 

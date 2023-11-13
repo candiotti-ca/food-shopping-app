@@ -5,6 +5,7 @@
 	import type { Article } from '../types/article';
 	import Button from './Button.svelte';
 	import Icon from './Icon.svelte';
+	import { enhance } from '$app/forms';
 
 	export let article: Article;
 
@@ -34,8 +35,11 @@
 	</div>
 
 	<div class="alert-actions">
-		<Button on:click={removeArticle}>
-			<Icon color={article.stroked ? 'surface' : 'error'} size="xl"><TrashIcon /></Icon>
-		</Button>
+		<form on:submit={removeArticle} method="POST" action="?/delete" use:enhance>
+			<input type="hidden" name="name" value={article.name} />
+			<Button type="submit">
+				<Icon color={article.stroked ? 'surface' : 'error'} size="xl"><TrashIcon /></Icon>
+			</Button>
+		</form>
 	</div>
 </section>
