@@ -26,7 +26,7 @@
 	}
 </script>
 
-<header class="bg-primary-500 h-[10vh] flex justify-center align-center">
+<header class="bg-primary-500 h-[10vh] flex justify-center align-center" id="app-title">
 	<Heading white>Coucourses</Heading>
 </header>
 
